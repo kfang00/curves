@@ -17,10 +17,11 @@ def add_curve( points, x0, y0, x1, y1, x2, y2, x3, y3, step, curve_type ):
     holdx = generate_curve_coefs( x0, x1, x2, x3, curve_type )
     holdy = generate_curve_coefs( y0, y1, y2, y3, curve_type )
     while t < 1:
-        x = holdx[0] * (t ** 3) + holdx[1] * (t ** 2) + holdx[2] * t + holdx[3]
-        y = holdy[0] * (t ** 3) + holdy[1] * (t ** 2) + holdy[2] * t + holdy[3]
-        x1 = holdx[0] * ((t + step) ** 3) + holdx[1] * ((t + step) ** 2) + holdx[2] * (t + step) + holdx[3]
-        y1 = holdy[0] * ((t + step) ** 3) + holdy[1] * ((t + step) ** 2) + holdy[2] * (t + step) + holdy[3]
+        #print(holdx[0])
+        x = holdx[0][0] * (t ** 3) + holdx[0][1] * (t ** 2) + holdx[0][2] * t + holdx[0][3]
+        y = holdy[0][0] * (t ** 3) + holdy[0][1] * (t ** 2) + holdy[0][2] * t + holdy[0][3]
+        x1 = holdx[0][0] * ((t + step) ** 3) + holdx[0][1] * ((t + step) ** 2) + holdx[0][2] * (t + step) + holdx[0][3]
+        y1 = holdy[0][0] * ((t + step) ** 3) + holdy[0][1] * ((t + step) ** 2) + holdy[0][2] * (t + step) + holdy[0][3]
         add_edge(points, x, y, 0, x1, y1, 0)   
         t += step 
 

@@ -79,7 +79,7 @@ def parse_file( fname, edges, transform, screen, color ):
             idx += 1
         elif (s[idx] == 'hermite'):
             hold = s[idx + 1].split()
-            add_curve( edges, int(hold[0]), int(hold[1]), int(hold[2]), int(hold[3]), int(hold[4]), int(hold[5]), int(hold[6]), int(hold[7]), 0.001, 'hermite' )
+            add_curve( edges, hold[0], hold[1], hold[2], hold[3], hold[4], hold[5], hold[6], hold[7], 0.001, 'hermite' )
             idx += 1
         elif (s[idx] == 'bezier'):
             hold = s[idx + 1].split()
