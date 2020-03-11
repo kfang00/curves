@@ -1,12 +1,28 @@
 from display import *
 from matrix import *
-
+import math
 
 def add_circle( points, cx, cy, cz, r, step ):
-    pass
+    t = 0
+    while t < 1:
+        x = r * math.cos(2 * math.pi * t) + cx
+        y = r * math.sin(2 * math.pi * t) + cy 
+        x1 = r * math.cos(2 * math.pi * (t + step)) + cx
+        y1 = r * math.sin(2 * math.pi * (t + step)) + cy 
+        add_edge(points, x, y, 0, x1, y1, 0)   
+        t += step 
 
 def add_curve( points, x0, y0, x1, y1, x2, y2, x3, y3, step, curve_type ):
-    pass
+    t = 0
+    holdx = generate_curve_coefs( x0, x1, x2, x3, curve_type )
+    holdy = generate_curve_coefs( y0, y1, y2, y3, curve_type )
+    while t < 1:
+        x = holdx[0] * (t ** 3) + holdx[1] * (t ** 2) + holdx[2] * t + holdx[3]
+        y = holdy[0] * (t ** 3) + holdy[1] * (t ** 2) + holdy[2] * t + holdy[3]
+        x1 = holdx[0] * ((t + step) ** 3) + holdx[1] * ((t + step) ** 2) + holdx[2] * (t + step) + holdx[3]
+        y1 = holdy[0] * ((t + step) ** 3) + holdy[1] * ((t + step) ** 2) + holdy[2] * (t + step) + holdy[3]
+        add_edge(points, x, y, 0, x1, y1, 0)   
+        t += step 
 
 
 def draw_lines( matrix, screen, color ):

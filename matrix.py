@@ -11,15 +11,18 @@ import math
 
 def make_bezier():
     t = [[-1, 3, -3, 1],[3, -6, 3, 0],[-3, 3, 0, 0],[1, 0, 0, 0]]
-    pass
+    return t
 
 def make_hermite():
-    t = [[0, 1, 0, 3],[0, 1, 0, 2]],[0, 1 , 1,],[1,1,0,0]]
-    pass
+    t = [[2, -3, 0, 1],[-2, 3, 0, 0]],[1, -2, 1, 0],[1, -1, 0, 0]]
+    return t
 
 def generate_curve_coefs( p0, p1, p2, p3, t ):
     hold = [p0, p1, p2, p3]
-    matrix_mult( t, hold ):
+    if t == "bezier":
+        matrix_mult(make_bezier(), hold ):
+    elif t == "hermite":
+        matrix_mult(make_hermite(), hold ):
     return hold
 
 
